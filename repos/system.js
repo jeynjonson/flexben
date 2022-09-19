@@ -79,9 +79,7 @@ const systemEmployee={
         console.log(id)
 
         db.query(sql, id, (err, data)=>{
-            console.log(data)
-           
-           
+            console.log(data)   
         })
 
     }
