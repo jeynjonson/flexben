@@ -2,11 +2,11 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const systemEmployee = require('../repos/system');
 
-const login = async (req, res) => {
+const login = (req, res) => {
 
     const user = {
-        "email":`%${req.body.email}%`,
-        "password":`%${req.body.password}%`
+        "email":req.body.email,
+        "password":req.body.password
     };
   
     if (!user.password || !user.email) {
@@ -21,7 +21,11 @@ const login = async (req, res) => {
         if (result.length) {
             const accessToken = jwt.sign(payload, process.env.JWT_KEY);
             res.json({accessToken});
-        }   
+        }  else{
+            return res    
+            .status(404)
+            .json({ message: "Invalid credentials" });
+        }
     },
     (err) => {
     next(err);

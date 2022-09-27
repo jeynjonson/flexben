@@ -23,7 +23,7 @@ const employeeJWT = (req, res, next) => {
             next();
             return res.send(decoded)
         } 
-        return res.send('Please log in first');
+        return res.send('Unauthorized access');
       })
     } else{
         return res.send('Unauthorized access');

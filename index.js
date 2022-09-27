@@ -14,7 +14,7 @@ const hrJWT = require('./middleware/userJWT/hrJWT')
 app.use("/login", require('./routes/login'))
 app.use("/employee", require('./routes/employeeRoute'));
 
-router.get('/getLogin', hrJWT,(req,res)=>{
+router.get('/getLogin', (req,res)=>{
     system.findAllEmployee((data)=>{
         console.log(data)
         res.send(data)
@@ -30,7 +30,7 @@ router.put('/logout', (req,res)=>{
         console.log(id)
         if(id){
          system.logoutEmployee(id)
-         res.sendStatus(200)
+         res.send('Log out successfuly')
         } else{
         return res.sendStatus(403);
         }

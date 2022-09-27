@@ -24,7 +24,7 @@ const hrJWT = (req, res, next) => {
         if(isActive){
             next();
         } //return res.statusMessage = "Please Log in";
-        return res.send('Please log in');
+        return res.send('Unauthorized access');
       })
     } else{
         return res.send('Unauthorized access');

@@ -34,12 +34,12 @@ let employee = {
         })
     },
     updateTotalReimbursementAmount: (totalAmount, id, resolve)=>{
-
+        date = new Date();
         let sql = `UPDATE flex_reimbursement
-        SET  total_reimbursement_amount = ?
+        SET  total_reimbursement_amount = ?, date_updated = ?
         WHERE employee_id = ?`;
 
-        db.query(sql, [totalAmount, id], (err, data)=>{
+        db.query(sql, [totalAmount,date, id], (err, data)=>{
             console.log()
             console.log(data)
             resolve(data)
